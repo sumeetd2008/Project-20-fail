@@ -4,13 +4,13 @@ var mouse, mouseWithCheese, mouseTeasing, mouseObserving;
 
 function preload() {
     //load the images here
-    backgroundImg = loadImage("garden.png");
-    catSitting = loadAnimation("cat1.png");
-    catMoving = loadAnimation("cat2.png", "cat3.png");
-    catHappy = loadAnimation("cat4.png");
-    mouseWithCheese = loadAnimation("mouse1.png");
-    mouseTeasing = loadAnimation("mouse2.png", "mouse3.png");
-    mouseObserving = loadAnimation("mouse4.png");
+    backgroundImg = loadImage("images/garden.png");
+    catSitting = loadAnimation("images/cat1.png");
+    catMoving = loadAnimation("images/cat2.png", "images/cat3.png");
+    catHappy = loadAnimation("images/cat4.png");
+    mouseWithCheese = loadAnimation("images/mouse1.png");
+    mouseTeasing = loadAnimation("images/mouse2.png", "images/mouse3.png");
+    mouseObserving = loadAnimation("images/mouse4.png");
 }
 
 function setup(){
@@ -22,9 +22,7 @@ function setup(){
     cat = createSprite(800, 550);
     cat.addAnimation("catsitting", catSitting);
     cat.addAnimation("catmoving", catMoving);
-    cat.addAnimation("cathappy", catHappy);
-    cat.debug = true;
-    
+    cat.addAnimation("cathappy", catHappy); 
     cat.scale = 0.15;
 
     mouse = createSprite(200, 565);
@@ -32,14 +30,18 @@ function setup(){
     mouse.addAnimation("mousewithcheese", mouseWithCheese);
     mouse.addAnimation("mouseteasing", mouseTeasing);
     mouse.scale = 0.12;
-    mouse.debug = true;
 }
 
 function draw() {
 
     background(255);
     //Write condition here to evalute if tom and jerry collide
-
+    if(cat.x - mouse.x < (cat.width/6 + mouse.width/6   )) {
+        cat.velocityX = 0;
+        cat.changeAnimation("cathappy", catHappy);
+        mouse.changeAnimation("mousewithcheese", mouseWithCheese);
+    }
+    
     keyPressed();
 
    
@@ -57,9 +59,5 @@ function keyPressed(){
         cat.scale = 0.2;
         cat.velocityX = -4;
     }
-    if(cat.x - mouse.x < (cat.width/6 + mouse.width/6   )) {
-        cat.velocityX = 0;
-        cat.changeAnimation("cathappy", catHappy);
-        mouse.changeAnimation("mousewithcheese", mouseWithCheese);
-    }
+    
 }
