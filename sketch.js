@@ -7,7 +7,7 @@ function preload() {
     backgroundImg = loadImage("garden.png");
     catSitting = loadAnimation("cat1.png");
     catMoving = loadAnimation("cat2.png", "cat3.png");
-    catHappy = loadAnimation("/cat4.png");
+    catHappy = loadAnimation("cat4.png");
     mouseWithCheese = loadAnimation("mouse1.png");
     mouseTeasing = loadAnimation("mouse2.png", "mouse3.png");
     mouseObserving = loadAnimation("mouse4.png");
